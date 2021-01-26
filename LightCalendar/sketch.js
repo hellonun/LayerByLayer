@@ -10,6 +10,8 @@ let count =  600; // don't display at start
 let countKey =  0;
 let playerX;
 
+let state = 0;
+
 function preload() {
     vid = createVideo('https://player.vimeo.com/external/472000608.hd.mp4?s=ca7ab7013bbdf7d92cc5b013e1d4464833aec67b&profile_id=174');
   // vid = createVideo('lightcalendar2.mp4');
@@ -141,7 +143,12 @@ function draw() {
     displayMouse();
   }
 
-
+ if (state <2) {
+   background(0,200);
+   textSize(tst/1.5);
+   fill(255);
+   text("(Hit space bar twice to start the installation.)", width/2, height/2);
+ }
 }
 
 function displayPlayer() {
@@ -222,6 +229,7 @@ function mouseDragged() {
 
 function keyPressed() {
   if (key === ' '){
+    state++;
     countKey = 0;
     if (!playing) {
       vid.play();
